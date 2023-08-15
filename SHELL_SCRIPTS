@@ -1,0 +1,25 @@
+Below are lists of .C-files I think We need to work on
+
+1. builtins.c
+
+2. helper_files.c
+
+3. linked_list.c
+
+4. string_functions.c
+
+5. tokens.c
+
+6. get_location.c
+
+7. handlers.c
+
+8. env.c
+
+9. getline.c
+
+10. strtok.c
+
+11. shell.h
+
+12. shell.c (replacing main)
