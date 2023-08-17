@@ -1,5 +1,7 @@
 Below are lists of .C-files I think We need to work on
 
+0. prompt.c
+
 1. builtins.c
 
 2. helper_files.c

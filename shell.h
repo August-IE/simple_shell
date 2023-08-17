@@ -1,6 +1,9 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+
+#define MAX_NUM 20
+
 /*
  * File: Shell.h
  * Desc: My header file for 0x16. C - Simple Shell
@@ -18,6 +21,11 @@
 
 /*************************FUNCTION PROTOTYPES************************/
 
+
+/******GLOBAL VARIABLES*******/
+extern char **environ;
+
+/***STRING_FUNCTIONS***/
 int _putchar(char c);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
@@ -31,5 +39,12 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 void set_string(char **s, char *to);
+
+/***PROMPT***/
+int main(int ac, char **av, char **env);
+void prompt(char **av, char **env);
+
+/**GETENV**/
+char *_getenv(const char *env);
 
 #endif /* SHELL_H */
