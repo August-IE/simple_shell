@@ -20,7 +20,7 @@ index++;
 }
 return (NULL);
 }
-int main()
+int main(void)
 {
 printf("%s\n", _getenv("LS"));
 return (0);
