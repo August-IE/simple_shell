@@ -21,6 +21,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+#define MAX_INPUT_SIZE 1024
 #define END_OF_FILE -2
 #define EXIT -3
 

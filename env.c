@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * getenv -  gets an environment variable
+ * *_getenv -  gets an environment variable
  * @env: environment variable
  * Return: pointer to the value
 */
 char *_getenv(const char *env)
 {
-extern char **environ;
+/*extern char **environ;*/
 int index = 0;
 char *p;
 
@@ -20,6 +20,12 @@ index++;
 }
 return (NULL);
 }
+
+/**
+ * main - program
+ *
+ * Return: 0
+ */
 int main(void)
 {
 printf("%s\n", _getenv("LS"));
