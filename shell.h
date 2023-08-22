@@ -55,6 +55,7 @@ void set_string(char **s, char *to);
 
 /******FOR MEMORY******/
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memcpy(char *dest, char *src, unsigned int size);
 
 /**GETENV**/
 char *_getenv(const char *env);
