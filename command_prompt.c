@@ -4,12 +4,13 @@
  * display_prompt - to display the prompt
  *
  * Return: void
- */
+ *
 void display_prompt(void)
 {
+if (isatty(STDIN_FILENO))
 printf("AC_Shell >> ");
 fflush(stdout);
-}
+}**/
 
 /**
  * main - program
@@ -27,7 +28,11 @@ pid_t pid;
 (void)env;
 
 while (1)
-{ display_prompt();
+{
+if (isatty(STDIN_FILENO))
+printf("AC_Shell >> ");
+fflush(stdout);
+/*display_prompt();*/
 if (fgets(input, sizeof(input), stdin) == NULL)
 {
 if (feof(stdin))
@@ -59,8 +64,9 @@ else if (pid < 0)
 { perror("Fork failed");
 }
 else
-{ /* Parent process */ int status; waitpid(pid, &status, 0); }
+{ /* Parent process */
+int status;
+waitpid(pid, &status, 0); }
 }
-
 return (0);
 }
