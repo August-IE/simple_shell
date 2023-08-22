@@ -51,7 +51,10 @@ char *_strstr(char *haystack, char *needle);
 void set_string(char **s, char *to);
 
 /***PROMPT***/
-void display_prompt(void);
+/*void display_prompt(void);*/
+
+/******FOR MEMORY******/
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 /**GETENV**/
 char *_getenv(const char *env);
