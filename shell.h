@@ -31,6 +31,7 @@ int _printstring(char *str);
 char *location(char *path, char *arg);
 char *get_loc(char *arg);
 int _builtInCmd(char **arg);
+int main(int argc, char **argv, char **env);
 
 /******GLOBAL VARIABLES*******/
 extern char **environ;
@@ -50,7 +51,6 @@ char *_strstr(char *haystack, char *needle);
 void set_string(char **s, char *to);
 
 /***PROMPT***/
-void prompt(char **argv, char **envp);
 void display_prompt(void);
 
 /**GETENV**/
