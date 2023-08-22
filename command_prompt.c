@@ -15,12 +15,17 @@ fflush(stdout);
  * main - program
  *
  * Return: success 0
- */
-int main(void)
+ *
+int main(void)*/
+int main(int argc, char **argv, char **env)
 {
 char input[MAX_INPUT_SIZE];
 char *args[MAX_INPUT_SIZE]; /* These arguments will be passed to execve */
 pid_t pid;
+(void)argc;
+(void)argv;
+(void)env;
+
 while (1)
 { display_prompt();
 if (fgets(input, sizeof(input), stdin) == NULL)
