@@ -48,17 +48,14 @@ args[0] = input;
 args[1] = NULL;
 if (execve(input, args, env) == -1)
 { perror("Command execution error");
-exit(1);}
+exit(1); }
 }
 else if (pid < 0)
 { perror("Fork failed");
 }
-	else { /* Parent process */
-		int status;
-
-		waitpid(pid, &status, 0);
-	}
+else
+{ /* Parent process */ int status; waitpid(pid, &status, 0); }
 }
 
-return 0;
+return (0);
 }
