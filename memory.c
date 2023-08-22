@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * *_realloc -
- * @ptr:
- * @old_size:
- * @new_size:
+ * *_realloc - For reallocating the memory block
+ * @ptr: pointer to the old memory
+ * @old_size: The old size of memory block
+ * @new_size: The new size of memory block.
  *
- * Return:
+ * Return: a pointer to the newly allocated memory.
  */
-void *_realloc()
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 
 }
