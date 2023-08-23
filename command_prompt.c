@@ -20,7 +20,7 @@ pid_t pid;
 while (1)
 {
 if (isatty(STDIN_FILENO))
-{ printf("ACShell $ ");
+{ printf("ACShell >> ");
 fflush(stdout); }
 if (fgets(input, sizeof(input), stdin) == NULL)
 {
