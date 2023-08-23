@@ -13,7 +13,6 @@ int main(int argc, char **argv, char **env)
 char input[MAX_INPUT_SIZE];
 char *args[MAX_INPUT_SIZE]; /* The arguments to be passed to execve */
 pid_t pid;
-int status;
 (void)argc;
 (void)argv;
 (void)env;
@@ -21,9 +20,8 @@ int status;
 while (1)
 {
 if (isatty(STDIN_FILENO))
-{ printf("AC_Shell >> ");
+{ printf("ACShell $ ");
 fflush(stdout); }
-{
 if (fgets(input, sizeof(input), stdin) == NULL)
 {
 if (feof(stdin))
@@ -31,11 +29,11 @@ if (feof(stdin))
 break; /* End of file (Ctrl+D) */ }
 else
 { perror("Input error");
-continue; }}}
+continue; }}
 input[strcspn(input, "\n")] = '\0';
 if (strcmp(input, "exit") == 0)
-printf("Exiting shell...\n");
-break;
+{ printf("Exiting shell...\n");
+break; }
 pid = fork();
 if (pid == 0)
 {/* Child process */ char *env[] = { NULL }; /* Empty environment for execve */
@@ -45,8 +43,9 @@ if (execve(input, args, env) == -1)
 { perror("Command execution error");
 exit(1); }}
 else if (pid < 0)
-perror("Fork failed");
-else /* Parent process */
-waitpid(pid, &status, 0); }
+{ perror("Fork failed"); }
+else
+{int status;  /* Parent process */
+waitpid(pid, &status, 0); }}
 return (0);
 }
