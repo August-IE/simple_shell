@@ -57,7 +57,7 @@ return (dest);
  *
  * Return: a pointer to the newly allocated memory.
  */
-char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
+char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 char **newptr;
 unsigned int i;
