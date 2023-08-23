@@ -1,6 +1,23 @@
 #include "shell.h"
 
 /**
+ * *_memcpy - copies the memory area
+ * @dest: destination of new ptr to the memory area.
+ * @src: source pointer to the memory area
+ * @size: size of the memory area.
+ * Return: pointer to the dest.
+ *
+ */
+char *_memcpy(char *dest, char *src, unsigned int size)
+{
+unsigned int i;
+
+for (i = 0; i < size; i++)
+dest[i] = src[i];
+return (dest);
+}
+
+/**
  * *_realloc - For reallocating the memory block
  * @ptr: pointer to the old memory
  * @old_size: The old size of memory block
@@ -22,35 +39,21 @@ return (NULL);
 }
 if (new_size == old_size)
 return (ptr);
-
 newptr = malloc(new_size);
 if (newptr == NULL)
 return (NULL);
+
 if (new_size < old_size)
 _memcpy(newptr, ptr, new_size);
 else
 _memcpy(newptr, ptr, old_size);
+
+free(ptr);
+return (newptr);
 }
 
 /**
- * *_memcpy - copies the memory area
- * @dest: destination of new ptr to the memory area.
- * @src: source pointer to the memory area
- * @size: size of the memory area.
- * Return:
- *
- */
-char *_memcpy(char *dest, char *src, unsigned int size)
-{
-unsigned int i;
-
-for (i = 0; i < size; i++)
-src[i] = dest[i];
-return (dest);
-}
-
-/**
- * *_reallocdp - For filing and reallocating the memory block
+ * **_reallocdp - For filing and reallocating the memory block
  * @ptr: pointer to the old memory
  * @old_size: The old size of memory block
  * @new_size: The new size of memory block.
@@ -63,12 +66,12 @@ char **newptr;
 unsigned int i;
 
 if (ptr == NULL)
-return (malloc(sizeof(char *) *new_size));
+return (malloc(sizeof(char *) * new_size));
 
 if (new_size == old_size)
 return (ptr);
 
-newptr = malloc(sizeof(char *) *new_size);
+newptr = malloc(sizeof(char *) * new_size);
 if (newptr == NULL)
 return (NULL);
 
