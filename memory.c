@@ -22,14 +22,14 @@ return (NULL);
 }
 if (new_size == old_size)
 return (ptr);
-if (new_size < old_size)
-_memcpy(newptr, ptr, new_size);
-else
-_memcpy(newptr, ptr, old_size);
 
 newptr = malloc(new_size);
 if (newptr == NULL)
 return (NULL);
+if (new_size < old_size)
+_memcpy(newptr, ptr, new_size);
+else
+_memcpy(newptr, ptr, old_size);
 }
 
 /**
@@ -40,11 +40,40 @@ return (NULL);
  * Return:
  *
  */
-void *memcpy(char *dest, char *ptr, unsigned int size)
+char *_memcpy(char *dest, char *src, unsigned int size)
 {
 unsigned int i;
 
 for (i = 0; i < size; i++)
 src[i] = dest[i];
 return (dest);
+}
+
+/**
+ * *_reallocdp - For filing and reallocating the memory block
+ * @ptr: pointer to the old memory
+ * @old_size: The old size of memory block
+ * @new_size: The new size of memory block.
+ *
+ * Return: a pointer to the newly allocated memory.
+ */
+char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
+{
+char **newptr;
+unsigned int i;
+
+if (ptr == NULL)
+return (malloc(sizeof(char *) *new_size));
+
+if (new_size == old_size)
+return (ptr);
+
+newptr = malloc(sizeof(char *) *new_size);
+if (newptr == NULL)
+return (NULL);
+
+for (i = 0; i < old_size; i++)
+newptr[i] = ptr[i];
+free(ptr);
+return (newptr);
 }

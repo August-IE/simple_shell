@@ -56,8 +56,9 @@ if (pid == 0)
 char *env[] = { NULL }; /* Empty environment for execve */
 args[0] = input;
 args[1] = NULL;
-if (execve(input, args, env) == -1)
-{ perror("Command execution error");
+if (execve(argv[0], args, env) == -1)
+{
+perror("Command execution error");
 exit(1); }
 }
 else if (pid < 0)
