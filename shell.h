@@ -64,7 +64,7 @@ char *_getenv(const char *env);
 
 /* Main Helpers */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+/* void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size); */
 char **_strtok(char *line, char *delim);
 char *get_location(char *command);
 int execute(char **args, char **front);
@@ -86,7 +86,6 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
-int _putchar(char c);
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
