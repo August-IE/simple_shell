@@ -1,5 +1,16 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
 #include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <errno.h>
+
+#define MAX_INPUT_SIZE 1024
 
 /**
  * main - Entry point of the shell program.
@@ -20,7 +31,7 @@ pid_t pid;
 while (1)
 {
 if (isatty(STDIN_FILENO))
-{ printf("ACShell >> ");
+{ printf("ACShell($) ");
 fflush(stdout); }
 if (fgets(input, sizeof(input), stdin) == NULL)
 {
