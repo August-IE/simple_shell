@@ -37,7 +37,7 @@ int main(int argc, char **argv, char **env);
 extern char **environ;
 
 /***STRING_FUNCTIONS***/
-int _strlen(char *s);
+int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 char *_strcat(char *dest, char *src);
@@ -49,6 +49,7 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 void set_string(char **s, char *to);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 /***PROMPT***/
 /*void display_prompt(void);*/
@@ -59,7 +60,7 @@ char *_memcpy(char *dest, char *src, unsigned int size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
 /**GETENV**/
-char *_getenv(const char *env);
+char **_getenv(const char *env);
 
 
 /* Main Helpers */

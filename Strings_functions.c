@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int _strlen(char *str);
+int _strlen(const char *str);
 char *_strchr(char *s, char c);
 char *_strcpy(char *dest, char *src);
 unsigned int _strspn(char *s, char *accept);
@@ -12,7 +12,7 @@ char *_strncpy(char *dest, char *src, int n);
  *
  * Return: The length of @str.
  */
-int _strlen(char *str)
+int _strlen(const char *str)
 {
 	int length = 0;
 
