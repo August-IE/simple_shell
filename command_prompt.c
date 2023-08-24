@@ -24,18 +24,25 @@ int main(int argc, char **argv, char **env)
 char input[MAX_INPUT_SIZE];
 char *args[MAX_INPUT_SIZE]; /* The arguments to be passed to execve */
 pid_t pid;
-(void)argc;
-(void)argv;
+FILE *scriptFile = NULL;
 (void)env;
+
+if (argc > 1)
+{ scriptFile = fopen(argv[1], "r");
+if (scriptFile == NULL) 
+{ perror("Error opening script file");
+return 1; }}
 
 while (1)
 {
-if (isatty(0) == 1)
-{ printf("ACShell($) ");
+if (scriptFile == NULL && isatty(0))
+{ printf("#ACShell$ ");
 fflush(stdout); }
-if (fgets(input, sizeof(input), stdin) == NULL)
-{
-if (feof(stdin))
+
+if (scriptFile != NULL && fgets(input, sizeof(input), scriptFile) == NULL)
+{ break; /* End of file in non-interactive mode */ }
+else if (scriptFile == NULL && fgets(input, sizeof(input), stdin) == NULL)
+{ if (feof(stdin))
 { printf("\nExiting shell...\n");
 break; /* End of file (Ctrl+D) */ }
 else
@@ -51,12 +58,15 @@ if (pid == 0)
 args[0] = input;
 args[1] = NULL;
 if (execve(input, args, env) == -1)
-{ perror("Command execution error");
+{ perror("Command error");
 exit(1); }}
 else if (pid < 0)
 { perror("Fork failed"); }
 else
 {int status;  /* Parent process */
 waitpid(pid, &status, 0); }}
+
+if (scriptFile != NULL)
+{ fclose(scriptFile); }
 return (0);
 }
