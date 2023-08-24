@@ -20,6 +20,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <errno.h>
+#include <stdarg.h>
 
 #define MAX_INPUT_SIZE 1024
 #define END_OF_FILE -2
@@ -32,6 +33,10 @@ char *location(char *path, char *arg);
 char *get_loc(char *arg);
 int _builtInCmd(char **arg);
 int main(int argc, char **argv, char **env);
+int sum_them_all(const unsigned int n, ...);
+void print_numbers(const char *separator, const unsigned int n, ...);
+void print_strings(const char *separator, const unsigned int n, ...);
+void print_all(const char * const format, ...);
 
 /******GLOBAL VARIABLES*******/
 extern char **environ;
@@ -92,5 +97,21 @@ size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
+
+
+/***** VARIADIC FUNCTIONS *****/
+
+/**
+ * struct printer - A struct type defining a printer.
+ * @symbol: A symbol representing a data type.
+ * @print: The function pointer to a function that prints
+ *         a data type corresponding to symbol.
+ */
+typedef struct printer
+{
+	char *symbol;
+	void (*print)(va_list arg);
+
+} printer_t;
 
 #endif /*_SHELL_H_ */
