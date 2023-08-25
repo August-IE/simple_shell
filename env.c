@@ -1,75 +1,67 @@
 #include "shell.h"
 
-char **_copyenv(void);
-void free_env(void);
-char **_getenv(const char *var);
-
 /**
- * _copyenv - Creates a copy of the environment.
+ * cmp_env - to compare
+ * @nenv: new environment
+ * @name: name of string
  *
- * Return: If an error occurs - NULL.
- *         O/w - a double pointer to the new copy.
- */
-char **_copyenv(void)
+ * Return: 0
+*/
+int cmp_env(const char *nenv, const char *name)
 {
-	char **new_environ;
-	size_t size;
-	int index;
+	int i;
 
-	for (size = 0; environ[size]; size++)
-		;
-
-	new_environ = malloc(sizeof(char *) * (size + 1));
-	if (!new_environ)
-		return (NULL);
-
-	for (index = 0; environ[index]; index++)
+	for (i = 0; nenv[i] != "="; i++)
 	{
-		new_environ[index] = malloc(_strlen(environ[index]) + 1);
-
-		if (!new_environ[index])
-		{
-			for (index--; index >= 0; index--)
-				free(new_environ[index]);
-			free(new_environ);
-			return (NULL);
-		}
-		_strcpy(new_environ[index], environ[index]);
+	if (name[i] != nenv[i])
+	return (0);
 	}
-	new_environ[index] = NULL;
-
-	return (new_environ);
+	return (i + 1);
 }
 
 /**
- * free_env - Frees the the environment copy.
- */
-void free_env(void)
+ * *_getenv - Gets an environmental variable from the PATH
+ * @_environ: a pointer to the string
+ * @name: the name of the variable to get
+ *
+ * Return: 0
+*/
+char *_getenv(const char *name, char **_environ)
 {
-	int index;
+	char *ptr_env;
+	int i;
+	int mov;
 
-	for (index = 0; environ[index]; index++)
-		free(environ[index]);
-	free(environ);
+ptr_env = NULL;
+mov = 0;
+for (i = 0; _environ[i]; i++)
+{
+mov = cmp_env(_environ[i].name);
+if (mov)
+{
+ptr_env = _environ[i];
+break;
+}
+}
+return (ptr_env *mov);
 }
 
 /**
- * _getenv - Gets an environmental variable from the PATH.
- * @var: The name of the environmental variable to get.
+ * _env - environment variables
+ * @acdata: The name of the environmental variable to get
  *
- * Return: If the environmental variable does not exist - NULL.
- *         Otherwise - a pointer to the environmental variable.
- */
-char **_getenv(const char *var)
+ * Return: 1 on success
+*/
+int _env(ACdata_t *acdata)
 {
-	int index, len;
-
-	len = _strlen(var);
-	for (index = 0; environ[index]; index++)
-	{
-		if (_strncmp(var, environ[index], len) == 0)
-			return (&environ[index]);
-	}
-
-	return (NULL);
+int i, j;
+for (i = 0; acdata->_environ[i]; i++)
+{
+for (j = 0; acdata->_environ[i][j]; j++)
+;
+write(STDOUT_FILENO, acdata->_environ, j);
+write(STDOUT_FILENO, '\n', i);
+}
+acdata->status = 0;
+return (1);
 }

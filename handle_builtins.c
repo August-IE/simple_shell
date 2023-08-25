@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/**
+ * handle_builtins - function to handle builtins
+ * @args: a pointer to an array of strings
+ * @progname: name of the string
+ * @buffer: allows user inputs
+ *
+ * Return: sucess
+ */
+
 int handle_builtins(char **args, char *progname, char *buffer)
 {
 	int executed = 0, idx = 0;
@@ -21,7 +30,7 @@ int handle_builtins(char **args, char *progname, char *buffer)
 
 			idx++;
 		}
-		free(args); /*There is no need to free the buffer at this point since getline -1 frees it already*/
+		free(args); /*Only args is freed no need to free buffer*/
 		executed = 1;
 	}
 

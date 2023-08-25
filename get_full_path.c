@@ -50,6 +50,7 @@ char *get_full_path(char *paths, char *cmd)
 			free(paths);
 			return (fullpath);
 		}
+		{
 		free(fullpath);
 		fullpath = NULL;
 		idx++;
