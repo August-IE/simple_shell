@@ -196,7 +196,6 @@ char *get_full_path(char *paths, char *cmd);
 char *_getpath(void);
 void fix_comments(char *buffer);
 int handle_builtins(char **args, char *progname, char *buffer);
-
 char **tokenizah(char *string);
 
 #endif /* _SHELL_H */
