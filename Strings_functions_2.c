@@ -99,3 +99,24 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	else
 		return (-15);
 }
+
+
+/**
+ * _strdup - duplicates given string
+ *
+ * @str: given string
+ * Return: string duplicate
+ */
+char *_strdup(char *str)
+{
+	int i, len = 0;
+	char *dup = NULL;
+	len = _strlen(str);
+	dup = malloc(sizeof(char *) * len);
+	if (dup == NULL)
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+		dup[i] = str[i];
+	dup[i] = '\0';
+	return (dup);
+}
