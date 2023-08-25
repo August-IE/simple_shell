@@ -20,12 +20,30 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <errno.h>
+<<<<<<< HEAD
 #include <limits.h>
+=======
+#include <stdarg.h>
+>>>>>>> refs/remotes/origin/master
 
 #define MAX_INPUT_SIZE 1024
 #define END_OF_FILE -2
 #define EXIT -3
 
+<<<<<<< HEAD
+=======
+/*************************FUNCTION PROTOTYPES************************/
+int _putchar(char c);
+int _printstring(char *str);
+char *location(char *path, char *arg);
+char *get_loc(char *arg);
+int _builtInCmd(char **arg);
+int main(int argc, char **argv);
+int sum_them_all(const unsigned int n, ...);
+void print_numbers(const char *separator, const unsigned int n, ...);
+void print_strings(const char *separator, const unsigned int n, ...);
+void print_all(const char * const format, ...);
+>>>>>>> refs/remotes/origin/master
 
 /**
  * struct ACdata
@@ -81,6 +99,7 @@ void free_list(list_t *head)
 
 /*************************FUNCTION PROTOTYPES************************/
 
+<<<<<<< HEAD
 /*********GETLINE**********/
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t i);
 ssize_t get_livoidne(char **lineptr, size_t *n, FILE *stream);
@@ -112,6 +131,10 @@ char *_strdup(const char *s);
 int _isdigit(const char *s);
 void rev_string(char *s);
 int _strlen(char *s);
+=======
+/***STRING_FUNCTIONS***/
+int _strlen(const char *s);
+>>>>>>> refs/remotes/origin/master
 char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 char *_strcat(char *dest, char *src);
@@ -123,12 +146,20 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 void set_string(char **s, char *to);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 /******FOR MEMORY******/
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_memcpy(char *dest, char *src, unsigned int size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
+<<<<<<< HEAD
+=======
+/**GETENV**/
+char **_getenv(const char *env);
+
+
+>>>>>>> refs/remotes/origin/master
 /* Main Helpers */
 char **_strtok(char *line, char *delim);
 char *get_location(char *command);
@@ -163,4 +194,56 @@ list_t *add_node(list_t **head, const char *str);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 
+
+/***** VARIADIC FUNCTIONS *****/
+
+/**
+ * struct printer - A struct type defining a printer.
+ * @symbol: A symbol representing a data type.
+ * @print: The function pointer to a function that prints
+ *         a data type corresponding to symbol.
+ */
+typedef struct printer
+{
+	char *symbol;
+	void (*print)(va_list arg);
+
+} printer_t;
+
 #endif /*_SHELL_H_ */
+
+
+
+
+
+#ifndef SHELL_H
+#define SHELL_H
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+/**Error printing functions */
+void zerror(char *prog, int count, char *cmd);
+void _puts(char *str);
+int _putchar(char c);
+void free_array(int argc, char *argv[]);
+
+/*Global Variable*/
+extern char **environ;
+int exit_num;
+int execn(char **args, char **argv);
+int extra_execn(char **args, char **argv, char *fullcmd);
+char *get_full_path(char *paths, char *cmd);
+char *_getpath(void);
+void fix_comments(char *buffer);
+int handle_builtins(char **args, char *progname, char *buffer);
+
+char **tokenizah(char *string);
+
+#endif

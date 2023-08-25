@@ -1,0 +1,9 @@
+/bin/ls
+/bin/cal
+/bin/echo "Hello World"
+/bin/date
+/bin/echo #################################
+ls
+cal
+thththth
+date
