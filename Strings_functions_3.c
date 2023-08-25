@@ -2,21 +2,23 @@
 
 /**
  * _strdup - duplicates the string
- * @s: pointer to the string
+ * @str: pointer to the string
  * Return: success 0
 */
-char *_strdup(const char *s)
+char *_strdup(char *str)
 {
-char *new;
-size_t len;
-
-len = _strlen(s);
-new = malloc(sizeof(char) * (len + 1));
-if (new == NULL)
-return (NULL);
-_memcpy(new, s, len + 1);
-return (new);
+	int i, len = 0;
+	char *dup = NULL;
+	len = _strlen(str);
+	dup = malloc(sizeof(char *) * len);
+	if (dup == NULL)
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+		dup[i] = str[i];
+	dup[i] = '\0';
+	return (dup);
 }
+
 
 /**
  * _isdigit - a function that checks for a digit

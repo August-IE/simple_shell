@@ -26,7 +26,7 @@ int cmp_env(const char *nenv, const char *name)
  *
  * Return: 0
 */
-char *_getenv(const char *name, char **_environ)
+char *_getenv(const char *name, char **_env)
 {
 	char *ptr_env;
 	int i;
