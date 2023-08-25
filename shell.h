@@ -1,5 +1,5 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef _SHELL_H
+#define _SHELL_H
 
 
 #define MAX_NUM 20
@@ -27,6 +27,7 @@
 #define END_OF_FILE -2
 #define EXIT -3
 
+<<<<<<< HEAD
 
 /*************************FUNCTION PROTOTYPES*********************
 int _putchar(char c);
@@ -68,6 +69,8 @@ char *name;
 int (*f)(ACdata_t *acdata);
 } builtin_t;**/
 
+=======
+>>>>>>> 24f5c3490d5b85ffc2d968ebc0bd5794ab70dc5e
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
@@ -78,9 +81,9 @@ int (*f)(ACdata_t *acdata);
  */
 typedef struct list_s
 {
-        char *str;
-        unsigned int len;
-        struct list_s *next;
+	char *str;
+	unsigned int len;
+	struct list_s *next;
 } list_t;
 
 size_t print_list(const list_t *h);
@@ -89,6 +92,7 @@ list_t *add_node(list_t **head, const char *str);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 
+<<<<<<< HEAD
 /*************************FUNCTION PROTOTYPES************************/
 
 /*********GETLINE*********
@@ -123,6 +127,9 @@ void rev_string(char *s);
 int _strlen(char *s);**/
 
 /***STRING_FUNCTIONS***/
+=======
+ /***STRING_FUNCTIONS***/
+>>>>>>> 24f5c3490d5b85ffc2d968ebc0bd5794ab70dc5e
 int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
@@ -154,6 +161,10 @@ char *location(char *path, char *arg);
 char *get_loc(char *arg);
 int _builtInCmd(char **arg);
 /*int main(int argc, char **argv, char **env);*/
+<<<<<<< HEAD
+=======
+
+>>>>>>> 24f5c3490d5b85ffc2d968ebc0bd5794ab70dc5e
 
 /***** VARIADIC FUNCTIONS *****/
 
@@ -188,4 +199,4 @@ int handle_builtins(char **args, char *progname, char *buffer);
 
 char **tokenizah(char *string);
 
-#endif
+#endif /* _SHELL_H */
