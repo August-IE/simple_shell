@@ -1,26 +1,6 @@
 #include "shell.h"
 
 /**
- * _strdup - duplicates the string
- * @str: pointer to the string
- * Return: success 0
-*/
-char *_strdup(char *str)
-{
-	int i, len = 0;
-	char *dup = NULL;
-	len = _strlen(str);
-	dup = malloc(sizeof(char *) * len);
-	if (dup == NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
-		dup[i] = str[i];
-	dup[i] = '\0';
-	return (dup);
-}
-
-
-/**
  * _isdigit - a function that checks for a digit
  * @s: pointer to the string
  * Return: 1 on success
