@@ -2,7 +2,6 @@
 
 /**
  * _getpath - Retrieves and duplicates the path
- * Author: Chinenye Ikpa
  * Return: A strings of the PATH Variable
  */
 
